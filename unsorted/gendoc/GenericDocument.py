@@ -132,64 +132,65 @@ class GenericDocument(ABC):
         return self
 
     def render(self) -> str:
-        result = ""
+        # Used to be a string, now is a list, tests are now broken.
+        result = []
         for things in self._document_parts:
             match things[0]:
                 case PartType.HEADING1:
                     if hasattr(self, "render_heading1"):
                         render_heading1 = getattr(self, "render_heading1")
                         part_result = render_heading1(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     else:
                         render_paragraph = getattr(self, "render_paragraph")
                         part_result = render_paragraph(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                 case PartType.HEADING2:
                     if hasattr(self, "render_heading2"):
                         render_heading2 = getattr(self, "render_heading2")
                         part_result = render_heading2(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     elif hasattr(self, "render_heading1"):
                         render_heading1 = getattr(self, "render_heading1")
                         part_result = render_heading1(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     else:
                         render_paragraph = getattr(self, "render_paragraph")
                         part_result = render_paragraph(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                 case PartType.HEADING3:
                     if hasattr(self, "render_heading3"):
                         render_heading3 = getattr(self, "render_heading3")
                         part_result = render_heading3(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     elif hasattr(self, "render_heading2"):
                         render_heading2 = getattr(self, "render_heading2")
                         part_result = render_heading2(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     elif hasattr(self, "render_heading1"):
                         render_heading1 = getattr(self, "render_heading1")
                         part_result = render_heading1(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     else:
                         render_paragraph = getattr(self, "render_paragraph")
                         part_result = render_paragraph(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                 case PartType.PARAGRAPH:
                     if hasattr(self, "render_paragraph"):
                         render_paragraph = getattr(self, "render_paragraph")
                         part_result = render_paragraph(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     else:
                         raise ValueError
                 case PartType.CODEBLOCK:
                     if hasattr(self, "render_codeblock"):
                         render_codeblock = getattr(self, "render_codeblock")
                         part_result = render_codeblock(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
                     else:
                         render_paragraph = getattr(self, "render_paragraph")
                         part_result = render_paragraph(text=things[1])
-                        result = result + part_result
+                        result.append(part_result)
 
         return result
 
