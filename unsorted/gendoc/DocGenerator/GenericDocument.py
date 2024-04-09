@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Self
-from PartType import PartType
-
+from .PartType import PartType
 
 class GenericDocument(ABC):
     def __init__(self) -> None:

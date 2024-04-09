@@ -1,4 +1,4 @@
-from GenericDocument import GenericDocument
+from .GenericDocument import GenericDocument
 
 
 class MarkdownDocument(GenericDocument):
