@@ -10,12 +10,6 @@ Make the scripts be runable through command line rather than need hard coding to
 
 # Content of Folder
 
-- **Gendoc**
-  Contains a bunch of scripts once used to complete an assignment.
-  The scripts are supposed to be used to create a document in either markdown or HTML.
-  **Todo:**
-  Need to figure out how to develop it further into something that has a user interface perhaps.
-
 - **Wordfreq**
   Contains a lone script that was created to complete an assignment.
   It is used to figure out how often words appear in a string given to it.
